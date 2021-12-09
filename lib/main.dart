@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,
       ),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
@@ -38,28 +39,28 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Map<String, List<GitlabProjectEntity>> projects = {
     '用户(C)端': [
-      GitlabProjectEntity(projectId: 338, name: 'riki-user_home', subtitle: 'C端用户首页'),
-      GitlabProjectEntity(projectId: 336, name: 'riki-user_mine', subtitle: 'C端用户我的'),
-      GitlabProjectEntity(projectId: 339, name: 'riki-user_shop', subtitle: 'C端用户商城'),
-      GitlabProjectEntity(projectId: 326, name: 'riki-order', subtitle: 'C端订单相关'),
+      GitlabProjectEntity(projectId: 338, name: 'riki-user_home', subtitle: '首页'),
+      GitlabProjectEntity(projectId: 336, name: 'riki-user_mine', subtitle: '我的'),
+      GitlabProjectEntity(projectId: 339, name: 'riki-user_shop', subtitle: '商城'),
+      GitlabProjectEntity(projectId: 326, name: 'riki-order', subtitle: '订单'),
     ],
     '服务者(B)端': [
-      GitlabProjectEntity(projectId: 337, name: 'riki-staff_mine', subtitle: 'B端我的'),
+      GitlabProjectEntity(projectId: 337, name: 'riki-staff_mine', subtitle: '我的'),
     ],
     '通用(B+C)端': [
-      GitlabProjectEntity(projectId: 152, name: 'riki-im', subtitle: 'B+C IM相关'),
-      GitlabProjectEntity(projectId: 322, name: 'riki-process_service', subtitle: 'B+C装修流程相关'),
-      GitlabProjectEntity(projectId: 348, name: 'riki-personal_home', subtitle: 'B+C个人主页'),
+      GitlabProjectEntity(projectId: 152, name: 'riki-im', subtitle: 'IM'),
+      GitlabProjectEntity(projectId: 322, name: 'riki-process_service', subtitle: '装修流程'),
+      GitlabProjectEntity(projectId: 348, name: 'riki-personal_home', subtitle: '个人主页'),
     ],
     '公共组件': [
-      GitlabProjectEntity(projectId: 318, name: 'riki-map', subtitle: '公共组件地图'),
-      GitlabProjectEntity(projectId: 153, name: 'riki-webview', subtitle: '公共组件WebView'),
-      GitlabProjectEntity(projectId: 327, name: 'riki-login', subtitle: '公共组件登录'),
-      GitlabProjectEntity(projectId: 324, name: 'riki-account', subtitle: '公共组件账户信息'),
-      GitlabProjectEntity(projectId: 314, name: 'riki-ui', subtitle: '公共组件UI包'),
-      GitlabProjectEntity(projectId: 327, name: 'riki-router', subtitle: '公共组件路由'),
-      GitlabProjectEntity(projectId: 310, name: 'riki-base', subtitle: '公共组件基础组件'),
-      GitlabProjectEntity(projectId: 146, name: 'riki-login', subtitle: '公共组件登录'),
+      GitlabProjectEntity(projectId: 318, name: 'riki-map', subtitle: '地图'),
+      GitlabProjectEntity(projectId: 153, name: 'riki-webview', subtitle: 'WebView'),
+      GitlabProjectEntity(projectId: 327, name: 'riki-login', subtitle: '登录'),
+      GitlabProjectEntity(projectId: 324, name: 'riki-account', subtitle: '账户信息'),
+      GitlabProjectEntity(projectId: 314, name: 'riki-ui', subtitle: 'UI包'),
+      GitlabProjectEntity(projectId: 327, name: 'riki-router', subtitle: '路由'),
+      GitlabProjectEntity(projectId: 310, name: 'riki-base', subtitle: '基础组件'),
+      GitlabProjectEntity(projectId: 325, name: 'riki-project_config', subtitle: '项目配置'),
     ]
   };
 
@@ -72,7 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 20),
           alignment: Alignment.center,
-          child: Text(key,style: TextStyle(fontSize: 40),),
+          child: Text(
+            key,
+            style: TextStyle(fontSize: 24),
+          ),
         ),
       ));
       slivers.add(SliverGrid(
@@ -85,10 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
           childCount: value.length,
         ),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
+          crossAxisCount: 5,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
-          childAspectRatio: 16 / 10,
+          childAspectRatio: 16 / 5,
         ),
       ));
     });
@@ -130,8 +134,18 @@ class _GitlabProjectItemState extends State<GitlabProjectItem> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                widget.project.name,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.project.name,
+                  ),
+                  Text(
+                    widget.project.subtitle,
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                ],
               ),
               Visibility(
                 visible: snapshot.connectionState == ConnectionState.done,
