@@ -58,8 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
       GitlabProjectEntity(projectId: 327, name: 'riki-login', subtitle: '登录'),
       GitlabProjectEntity(projectId: 324, name: 'riki-account', subtitle: '账户信息'),
       GitlabProjectEntity(projectId: 314, name: 'riki-ui', subtitle: 'UI包'),
-      GitlabProjectEntity(projectId: 327, name: 'riki-router', subtitle: '路由'),
-      GitlabProjectEntity(projectId: 310, name: 'riki-base', subtitle: '基础组件'),
+      GitlabProjectEntity(projectId: 310, name: 'riki-router', subtitle: '路由'),
+      GitlabProjectEntity(projectId: 146, name: 'riki-base', subtitle: '基础组件'),
       GitlabProjectEntity(projectId: 325, name: 'riki-project_config', subtitle: '项目配置'),
     ]
   };
