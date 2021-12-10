@@ -23,7 +23,7 @@ jobs:
           git config --global user.email 200892907@qq.com
           git config --global user.name q200892907
           git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/q200892907/riki_packages_tag.git
+          git remote add origin git@github.com:q200892907/riki_packages_tag.git
           git checkout -b gh-pages
           git add --all
           git commit -m "update"
